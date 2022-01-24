@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-const UserSchema = new mongoose.Schema({
+import '../../config/DatabaseConfig';
+
+export const UserSchema = new mongoose.Schema({
   firstname: {
     type: String,
     required: true,

@@ -1,24 +1,25 @@
+import 'dotenv/config';
+
 import express from 'express';
 
-import mongoose from 'mongoose';
+import './config/DatabaseConfig';
 
-// import cors from 'cors';
-
-import UserModel from './api/models/Users';
+import bodyParser from 'body-parser';
+// import userRoutes from './api/routes/UsersRoutes';
+import router from './api/routes/userRoutes';
+import vehiculeRouter from './api/routes/VehiculeRoutes';
+import commandRouter from './api/routes/CommandRoutes';
 
 const app = express();
-mongoose.connect('mongodb+srv://sai:sai@gestion.jz5kd.mongodb.net/livraison?retryWrites=true&w=majority');
 
-app.get('/getUsers', (req, res) => {
-  UserModel.find({}, (err: any, result: any) => {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json(result);
-    }
-  });
-});
+app.use(bodyParser.json());
 
-app.listen(3001, () => {
-  console.log('server is runing');
+//* *** routes *** */
+app.use('/user', router);
+app.use('/vehicule', vehiculeRouter);
+app.use('/command', commandRouter);
+
+//* *** server *** */
+app.listen(process.env.PORT, () => {
+  console.log(`server is runing on ${process.env.PORT}`);
 });
