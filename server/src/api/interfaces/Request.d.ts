@@ -1,7 +1,7 @@
-import { User } from './User';
+// import { User } from './User';
 
-declare namespace Express {
-  export interface Request {
-    user?: User
-  }
-}
+// declare module 'express-serve-static-core' {
+//   interface Request {
+//     user?: User
+//   }
+// }

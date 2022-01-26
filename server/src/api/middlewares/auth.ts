@@ -14,8 +14,9 @@ const auth = async (req: Request, res: Response, next: NextFunction) => {
       decodedData = await Jwt.verify(token, 'isUser') as User;
       console.log(decodedData);
 
-      // eslint-disable-next-line no-underscore-dangle
       // req.user = decodedData._id;
+      // eslint-disable-next-line no-underscore-dangle
+      req.user = decodedData;
     }
 
     return next();

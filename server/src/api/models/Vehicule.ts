@@ -15,11 +15,7 @@ export const VehiculeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  createdAT: {
-    type: Date,
-    default: new Date(),
-  },
-});
+}, { timestamps: true });
 
 const VehiculeModel = mongoose.model('vehicule', VehiculeSchema);
 

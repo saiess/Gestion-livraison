@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 import '../../config/DatabaseConfig';
 
 export const CommandSchema = new mongoose.Schema({
+  number: {
+    type: String,
+    required: true,
+  },
   cityfrom: {
     type: String,
     required: true,
@@ -15,7 +19,7 @@ export const CommandSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  km: {
+  distance: {
     type: String,
     required: true,
   },
@@ -31,11 +35,9 @@ export const CommandSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  createdAT: {
-    type: Date,
-    default: new Date(),
-  },
-});
+  date: { type: Date },
+  Driver: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+}, { timestamps: true });
 
 const CommandModel = mongoose.model('command', CommandSchema);
 

@@ -1,9 +1,10 @@
 import { Response, Request } from 'express';
 
-import CommandModel from '../models/CommandModel';
+import CommandModel from '../models/Command';
 
 // import { User } from '../interfaces/User';
 import mongoose from '../../config/DatabaseConfig';
+// import emailCommand from '../helpers/Email.Command';
 
 //* ** get All Commands ****** */
 export const getAll = async (req: Request, res: Response) => {
@@ -17,7 +18,7 @@ export const getAll = async (req: Request, res: Response) => {
 };
 
 //* ** create Commands ****** */
-export const createCommand = async (req: Request, res:Response) => {
+export const createCommand = async (req: Request, res: Response) => {
   const Command = req.body;
 
   const newCommand = new CommandModel(Command);
@@ -38,11 +39,14 @@ export const updateCommand = async (req: Request, res: Response) => {
 
   const CommandToUpdate = req.body;
 
-  if (!mongoose.Types.ObjectId
-    .isValid(_id)) return res.status(404).send('no Command with that id');
+  if (!mongoose.Types.ObjectId.isValid(_id)) { return res.status(404).send('no Command with that id'); }
 
   // eslint-disable-next-line max-len
-  const updatedCommand = await CommandModel.findByIdAndUpdate(_id, CommandToUpdate, { new: true });
+  const updatedCommand = await CommandModel.findByIdAndUpdate(
+    _id,
+    CommandToUpdate,
+    { new: true },
+  );
 
   return res.json(updatedCommand);
 };
@@ -51,8 +55,7 @@ export const updateCommand = async (req: Request, res: Response) => {
 export const deleteCommand = async (req: Request, res: Response) => {
   const { id: _id } = req.params;
 
-  if (!mongoose.Types.ObjectId
-    .isValid(_id)) return res.status(404).send('no Command with that id');
+  if (!mongoose.Types.ObjectId.isValid(_id)) { return res.status(404).send('no Command with that id'); }
 
   await CommandModel.findByIdAndRemove(_id);
 

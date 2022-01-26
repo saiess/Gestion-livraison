@@ -9,6 +9,8 @@ import UserModel from '../models/User';
 import { User } from '../interfaces/User';
 import mongoose from '../../config/DatabaseConfig';
 
+import emailLogin from '../helpers/Email.Login';
+
 //* ** get All Users ****** */
 export const getUsers = async (req: Request, res: Response) => {
   UserModel.find({}, (err: any, result: any) => {
@@ -36,6 +38,8 @@ export const signin = async (req: Request, res: Response) => {
 
     const token = jwt.sign({ email: existingUser.email, id: existingUser.id, role: existingUser.role }, 'isUser', { expiresIn: '1h' });
     console.log('issssssssss', token);
+
+    emailLogin(existingUser.email);
 
     return res.status(200).json({ result: existingUser, token });
   } catch (error) {

@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node ./dist/app.js",
-    "dev": "nodemon ./src/app.ts",
+    "dev": "nodemon",
     "build": "tsc -p .",
     "lint": "eslint ./**/*.ts"
   },
@@ -17,7 +17,8 @@
     "express": "^4.17.2",
     "global": "^4.4.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.1.7"
+    "mongoose": "^6.1.7",
+    "nodemailer": "^6.7.2"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -26,6 +27,7 @@
     "@types/jsonwebtoken": "^8.5.8",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^17.0.10",
+    "@types/nodemailer": "^6.4.4",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "eslint": "^8.7.0",
