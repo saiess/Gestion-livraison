@@ -35,10 +35,9 @@ export const CommandSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  date: { type: Date },
-  Driver: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+  driver: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
 }, { timestamps: true });
 
-const CommandModel = mongoose.model('command', CommandSchema);
+const CommandModel = mongoose.model('Command', CommandSchema);
 
 export default CommandModel;

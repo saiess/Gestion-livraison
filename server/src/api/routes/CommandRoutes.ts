@@ -1,7 +1,7 @@
 import express from 'express';
 
 import {
-  getAll, createCommand, updateCommand, deleteCommand,
+  getAll, createCommand, updateCommand, deleteCommand, getCommandofDriver,
 } from '../controllers/CommandController';
 
 // import auth from '../middlewares/auth';
@@ -9,6 +9,7 @@ import {
 const router = express.Router();
 
 router.get('/getAll', getAll);
+router.get('/getCommandDriver', getCommandofDriver);
 router.post('/create', createCommand);
 router.patch('/update/:id', updateCommand);
 router.delete('/delete/:id', deleteCommand);

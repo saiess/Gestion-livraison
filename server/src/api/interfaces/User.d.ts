@@ -5,4 +5,5 @@ export interface User {
   role: string;
   firstnaem: string;
   lastname: string;
+  vehiculeId: string;
 }

@@ -50,7 +50,7 @@ export const signin = async (req: Request, res: Response) => {
 //* ** signiup ****** */
 export const createUser = async (req: Request, res:Response) => {
   const {
-    email, password, firstname, lastname, role,
+    email, password, firstname, lastname, role, vehiculeId,
   } = req.body;
 
   try {
@@ -61,7 +61,7 @@ export const createUser = async (req: Request, res:Response) => {
     const hashedPassword = await bcrypt.hash(password, 12);
 
     const result = await UserModel.create({
-      email, password: hashedPassword, firstname, lastname, role,
+      email, password: hashedPassword, firstname, lastname, role, vehiculeId,
     }) as User;
 
     /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */

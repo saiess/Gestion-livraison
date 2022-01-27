@@ -5,7 +5,7 @@ import '../../config/DatabaseConfig';
 export const PrimeSchema = new mongoose.Schema({
   command_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'command',
+    ref: 'Command',
     required: true,
   },
   driver_id: {
@@ -19,6 +19,6 @@ export const PrimeSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
-const PrimeModel = mongoose.model('vehicule', PrimeSchema);
+const PrimeModel = mongoose.model('prime', PrimeSchema);
 
 export default PrimeModel;
