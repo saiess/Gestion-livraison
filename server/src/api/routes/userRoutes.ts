@@ -9,9 +9,9 @@ import auth from '../middlewares/auth';
 const router = express.Router();
 
 router.get('/getAll', auth, getUsers);
-router.post('/signin', auth, signin);
-router.post('/create', createUser);
-router.patch('/update/:id', updateUser);
-router.delete('/delete/:id', deleteUser);
+router.post('/signin', signin);
+router.post('/create', auth, createUser);
+router.patch('/update/:id', auth, updateUser);
+router.delete('/delete/:id', auth, deleteUser);
 
 export default router;

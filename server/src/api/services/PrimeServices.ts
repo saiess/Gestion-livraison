@@ -27,7 +27,7 @@ export const primesDrivers = async (req: Request, res: Response) => {
     distancePrime = price * 0.15;
   }
 
-  console.log('we are outtttttttttttttt');
+  console.log('we are outttttttttttttttk');
   console.log(distancePrime);
   res.json(distancePrime);
 };

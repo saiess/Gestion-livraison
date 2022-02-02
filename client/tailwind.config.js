@@ -52,6 +52,10 @@ module.exports = {
         secColor: '#efefef',
         navColor: '#BEBEBE',
       },
+      backgroundImage: {
+        'hero-pattern': "url('./public/assets/images')",
+        // 'footer-texture': "url('/img/footer-texture.png')",
+      },
       backgroundColor: {
         mainColor: '#FBF8F9',
         secondaryColor: '#F0F0F0',

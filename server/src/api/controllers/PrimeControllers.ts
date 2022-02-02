@@ -13,14 +13,11 @@ export const getAll = async (req: Request, res: Response) => {
     res.status(404).json({ message: error.message });
   }
 };
-
 export const updatePrime = async (req: Request, res: Response) => {
   const date = new Date();
   const month = date.getMonth() + 1;
-
   // eslint-disable-next-line no-underscore-dangle
   const id = req.params._id;
-
   CommandModel.findByIdAndUpdate({ _id: id }, { Status: req.body.status, Driver: req.body.driver })
     .then((data: any) => {
       if (!data) {
