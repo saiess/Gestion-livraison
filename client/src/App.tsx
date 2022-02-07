@@ -21,6 +21,12 @@ import Vehicule from './pages/Dashboard/Vehcule';
 
 import Prime from './pages/Dashboard/Prime';
 
+import Manager from './pages/Dashboard/Manager';
+
+import Responsable from './pages/Dashboard/Responsable';
+
+import Driver from './pages/Dashboard/Driver';
+
 function App() {
   return (
     <Router>
@@ -28,15 +34,26 @@ function App() {
         <Route path='/'>
           <Route index element={<Login/>} />
           <Route path='admin' element={<LoginAdmin/>} />
+
+          {/* we want to protect */}
           <Route path='dashboard' element={<Dashboard/>}>
             <Route path='statistic' element={<Statistic/>}/>
             <Route path='livraison' element={<Livraison/>}/>
-            <Route path='user' element={<User/>}/>
+            <Route path='user' element={<User/>}>
+              <Route path='manager' element={<Manager/>}/>
+              <Route path='responsable' element={<Responsable/>}/>
+              <Route path='driver' element={<Driver/>}/>
+            </Route>
             <Route path='vehicule' element={<Vehicule/>}/>
             <Route path='prime' element={<Prime/>}/>
           </Route>
+
+
         </Route>
+
+        {/* catch missing paths */}
         <Route path='*' element={<Error />} />
+        
       </Routes>
     </Router>
 

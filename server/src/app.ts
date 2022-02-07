@@ -4,6 +4,8 @@ import express from 'express';
 
 import './config/DatabaseConfig';
 
+import cors from 'cors';
+
 import bodyParser from 'body-parser';
 // import userRoutes from './api/routes/UsersRoutes';
 import router from './api/routes/userRoutes';
@@ -15,6 +17,7 @@ import primeRouter from './api/routes/PrimeRoutes';
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 //* *** routes *** */
 app.use('/user', router);

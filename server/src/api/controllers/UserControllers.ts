@@ -65,7 +65,7 @@ export const createUser = async (req: Request, res:Response) => {
     }) as User;
 
     /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
-    const token = jwt.sign({ email: result.email, _id: result._id }, 'isUser', { expiresIn: '1h' });
+    const token = jwt.sign({ email: result.email, _id: result._id }, 'isUser', { expiresIn: '48h' });
 
     return res.status(200).json({ result, token });
   } catch {

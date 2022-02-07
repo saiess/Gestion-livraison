@@ -4,12 +4,12 @@ import {
   signin, getAdmin, deleteUser, createAdmin,
 } from '../controllers/AdminController';
 
-import auth from '../middlewares/auth';
+// import auth from '../middlewares/auth';
 
 const router = express.Router();
 
-router.get('/getAll', auth, getAdmin);
-router.post('/signin', auth, signin);
+router.get('/getAll', getAdmin);
+router.post('/signin', signin);
 router.post('/create', createAdmin);
 router.delete('/delete/:id', deleteUser);
 

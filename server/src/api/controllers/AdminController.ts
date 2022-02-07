@@ -16,6 +16,7 @@ import { Admin } from '../interfaces/Admin';
 export const getAdmin = async (req: Request, res: Response) => {
   AdminModel.find({}, (err: any, result: any) => {
     if (err) {
+      console.log('got it');
       res.json(err);
     } else {
       res.json(result);
@@ -28,7 +29,7 @@ export const signin = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   try {
-    const existingUser = await UserModel.findOne({ email });
+    const existingUser = await AdminModel.findOne({ email });
     console.log(existingUser);
 
     if (!existingUser) return res.status(404).json({ message: 'User does not exist' });
@@ -38,12 +39,13 @@ export const signin = async (req: Request, res: Response) => {
     if (!isPasswordCorrect) return res.status(400).json({ message: 'invalid informations' });
 
     const token = jwt.sign({ email: existingUser.email, id: existingUser.id, role: existingUser.role }, 'isUser', { expiresIn: '1h' });
-    console.log('issssssssss', token);
+    console.log('is', token);
 
     emailLogin(existingUser.email);
 
     return res.status(200).json({ result: existingUser, token });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: 'Somthing went wrong' });
   }
 };
